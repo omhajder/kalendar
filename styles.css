@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.calendar {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+}
+
+#prevMonth, #nextMonth {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#calendarDays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.today {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.paid {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+.reserved {
+    background-color: #f0ad4e;
+    color: #fff;
+}
