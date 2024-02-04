@@ -48,18 +48,20 @@ document.addEventListener('DOMContentLoaded', function () {
             calendarDays.appendChild(dayElement);
         }
     }
-
+    
     async function fetchHijriDate(year, month, day) {
-        const apiUrl = `http://api.aladhan.com/v1/gToH/${year}-${month}-${day}`;
-        
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            
-            // Assuming the API returns the Hijri date in a specific format
-            return data.data.hijri.date;
-        } catch (error) {
-            throw new Error('Error fetching Hijri date');
-        }
+    const formattedMonth = String(month).padStart(2, '0');
+    const formattedDay = String(day).padStart(2, '0');
+    const apiUrl = `http://api.aladhan.com/v1/gToH/${year}-${formattedMonth}-${formattedDay}`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        // Assuming the API returns the Hijri date in a specific format
+        return data.data.hijri.date;
+    } catch (error) {
+        throw new Error('Error fetching Hijri date');
     }
+
 });
