@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 dayElement.classList.add('today');
             }
 
-            dayElement.innerHTML = `<span>${day}</span><div class="info">Hijri: ${getHijriDate(date.getFullYear(), date.getMonth() + 1, day)}</div>`;
+            dayElement.innerHTML = `<span>${day}</span><div class="info">Hijri: ${approximateHijriDate(day)}</div>`;
 
             // Add placeholders for 4 individuals
             for (let i = 1; i <= 4; i++) {
@@ -42,11 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function getHijriDate(year, month, day) {
-        // Placeholder for Hijri date, replace this with actual conversion logic
-        const hijriMonth = 'HijriMonth';
-        const hijriDay = 'HijriDay';
+    function approximateHijriDate(day) {
+        // This is a basic approximation and may not be accurate
+        const hijriMonth = Math.floor(day / 29) + 1;
+        const hijriDay = day % 29 + 1;
 
-        return `${hijriMonth} ${hijriDay}`;
+        return `${hijriMonth} Rajab`; // Replace with the actual Hijri month name
     }
 });
