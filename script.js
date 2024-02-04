@@ -31,18 +31,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 dayElement.classList.add('today');
             }
 
-            dayElement.innerHTML = `<span>${day}</span><div class="info">Gregorian: ${getGregorianDate(date.getFullYear(), date.getMonth() + 1, day)}<br>Hijri: ${getHijriDate(date.getFullYear(), date.getMonth() + 1, day)}</div>`;
+            dayElement.innerHTML = `<span>${day}</span><div class="info">Hijri: ${getHijriDate(date.getFullYear(), date.getMonth() + 1, day)}</div>`;
+
+            // Add placeholders for 4 individuals
+            for (let i = 1; i <= 4; i++) {
+                dayElement.innerHTML += `<div class="individual" contenteditable="true" data-day="${day}" data-individual="${i}">Name ${i}</div>`;
+            }
+
             calendarDays.appendChild(dayElement);
         }
     }
 
-    function getGregorianDate(year, month, day) {
-        return new Date(year, month - 1, day).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-    }
-
     function getHijriDate(year, month, day) {
-        // You would need to implement a function to convert Gregorian to Hijri here
-        // This is just a placeholder
-        return 'Hijri Date';
+        // Placeholder for Hijri date, replace this with actual conversion logic
+        const hijriMonth = 'HijriMonth';
+        const hijriDay = 'HijriDay';
+
+        return `${hijriMonth} ${hijriDay}`;
     }
 });
