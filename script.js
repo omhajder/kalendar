@@ -31,7 +31,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 dayElement.classList.add('today');
             }
 
-            dayElement.innerHTML = `<span>${day}</span><div class="info">Hijri: ${approximateHijriDate(day)}</div>`;
+            // Fetch Hijri date from the API
+            fetchHijriDate(date.getFullYear(), date.getMonth() + 1, day)
+                .then(hijriDate => {
+                    dayElement.innerHTML = `<span>${day}</span><div class="info">Hijri: ${hijriDate}</div>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Hijri date:', error);
+                });
 
             // Add placeholders for 4 individuals
             for (let i = 1; i <= 4; i++) {
@@ -42,11 +49,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function approximateHijriDate(day) {
-        // This is a basic approximation and may not be accurate
-        const hijriMonth = Math.floor(day / 29) + 1;
-        const hijriDay = day % 29 + 1;
-
-        return `${hijriMonth} Rajab`; // Replace with the actual Hijri month name
+    async function fetchHijriDate(year, month, day) {
+        const apiUrl = `http://api.aladhan.com/v1/gToH/${year}-${month}-${day}`;
+        
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            
+            // Assuming the API returns the Hijri date in a specific format
+            return data.data.hijri.date;
+        } catch (error) {
+            throw new Error('Error fetching Hijri date');
+        }
     }
 });
