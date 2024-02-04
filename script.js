@@ -18,18 +18,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function displayCalendar(date) {
-        currentMonthLabel.textContent = date.toLocaleString('default', { month: 'long' }) + ' ' + date.getFullYear();
-        calendarDays.innerHTML = '';
+    currentMonthLabel.textContent = date.toLocaleString('default', { month: 'long' }) + ' ' + date.getFullYear();
+    calendarDays.innerHTML = '';
 
-        const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dayElement = document.createElement('div');
-            dayElement.classList.add('day');
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.classList.add('day');
 
-            if (date.getMonth() === currentDate.getMonth() && day === currentDate.getDate()) {
-                dayElement.classList.add('today');
-            }
+        if (date.getMonth() === currentDate.getMonth() && day === currentDate.getDate()) {
+            dayElement.classList.add('today');
+        }
+
+        fetchHijriDate(date.getFullYear(), date.getMonth() + 1, day)
+            .then(hijriDate => {
+                dayElement.innerHTML = `<span>${day}</span><div class="info">Hijri: ${hijriDate}</div>`;
+
+                // Add placeholders for 4 individuals
+                for (let i = 1; i <= 4; i++) {
+                    dayElement.innerHTML += `<div class="individual" contenteditable="true" data-day="${day}" data-individual="${i}">Name ${i}</div>`;
+                }
+
+                calendarDays.appendChild(dayElement);
+            })
+            .catch(error => {
+                console.error('Error fetching Hijri date:', error);
+            });
+    }
+}
 
             // Fetch Hijri date from the API
             fetchHijriDate(date.getFullYear(), date.getMonth() + 1, day)
