@@ -8,8 +8,8 @@ body {
 }
 
 iframe {
-    width: 58%; /* Increase size by 15% */
-    height: 104vh;
+    width: 10%; /* Increase size by 15% */
+    height: 80vh;
     max-width: 400px;
     max-height: 800px;
     display: block; /* Remove any default inline styles */
