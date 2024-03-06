@@ -9,8 +9,8 @@ function rotateAndScaleIframeBasedOnOrientation() {
     if (orientation === 0 || orientation === 180) {
         // Portrait orientation
         iframe.style.transform = 'rotate(90deg)';
-        iframe.style.width = '100vh';
-        iframe.style.height = '94vw';
+        iframe.style.width = '94vh';
+        iframe.style.height = '105vw';
         iframe.style.maxWidth = 'none';
         iframe.style.maxHeight = 'none';
         iframe.style.marginTop = 'calc((100vh - 100vw) / 2)';
