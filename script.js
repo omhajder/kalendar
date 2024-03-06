@@ -11,7 +11,12 @@ function rotateIframeForMobile() {
         iframe.style.height = '100vw';
         iframe.style.maxWidth = 'none';
         iframe.style.maxHeight = 'none';
-        iframe.style.marginTop = 'calc((100vh - 100vw) / 2)';
+
+        // Calculate margin dynamically based on viewport dimensions
+        var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+        var viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+        var marginTop = Math.max((viewportHeight - viewportWidth) / 2, 0);
+        iframe.style.marginTop = marginTop + 'px';
         iframe.style.marginLeft = 'auto';
         iframe.style.marginRight = 'auto';
     }
