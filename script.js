@@ -1,11 +1,11 @@
-// Function to rotate the iframe based on device orientation
-function rotateIframeBasedOnOrientation() {
+// Function to rotate and scale the iframe based on device orientation
+function rotateAndScaleIframeBasedOnOrientation() {
     var iframe = document.getElementById('sheet-iframe');
 
     // Check the current orientation
     var orientation = window.orientation;
 
-    // Apply rotation based on orientation
+    // Apply rotation and scaling based on orientation
     if (orientation === 0 || orientation === 180) {
         // Portrait orientation
         iframe.style.transform = 'rotate(90deg)';
@@ -19,10 +19,10 @@ function rotateIframeBasedOnOrientation() {
     } else {
         // Landscape orientation
         iframe.style.transform = ''; // Reset rotation
-        iframe.style.width = ''; // Reset width
-        iframe.style.height = ''; // Reset height
-        iframe.style.maxWidth = ''; // Reset max-width
-        iframe.style.maxHeight = ''; // Reset max-height
+        iframe.style.width = '100vw'; // Adjust width for landscape mode
+        iframe.style.height = '100vh'; // Adjust height for landscape mode
+        iframe.style.maxWidth = 'none'; // Reset max-width
+        iframe.style.maxHeight = 'none'; // Reset max-height
         iframe.style.marginTop = ''; // Reset top margin
         iframe.style.marginLeft = ''; // Reset left margin
         iframe.style.marginRight = ''; // Reset right margin
@@ -30,7 +30,7 @@ function rotateIframeBasedOnOrientation() {
 }
 
 // Add event listener for orientation change
-window.addEventListener('orientationchange', rotateIframeBasedOnOrientation);
+window.addEventListener('orientationchange', rotateAndScaleIframeBasedOnOrientation);
 
-// Call the function initially to set the correct rotation
-rotateIframeBasedOnOrientation();
+// Call the function initially to set the correct rotation and scaling
+rotateAndScaleIframeBasedOnOrientation();
