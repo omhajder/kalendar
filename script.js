@@ -12,13 +12,18 @@ function rotateIframeForMobile() {
         iframe.style.maxWidth = 'none';
         iframe.style.maxHeight = 'none';
 
-        // Calculate margin dynamically based on viewport dimensions
+        // Calculate left position to center iframe horizontally
         var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        var viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-        var marginTop = Math.max((viewportHeight - viewportWidth) / 2, 0);
-        iframe.style.marginTop = marginTop + 'px';
-        iframe.style.marginLeft = 'auto';
-        iframe.style.marginRight = 'auto';
+        var leftPosition = Math.max((viewportWidth - iframe.offsetHeight) / 2, 0);
+        iframe.style.left = leftPosition + 'px';
+
+        // Adjust top position to align iframe to the top of the viewport
+        iframe.style.top = '0';
+
+        // Reset margins
+        iframe.style.marginTop = '0';
+        iframe.style.marginLeft = '0';
+        iframe.style.marginRight = '0';
     }
 }
 
