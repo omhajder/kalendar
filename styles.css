@@ -14,3 +14,23 @@ iframe {
     max-height: 1080px;
     display: block; /* Remove any default inline styles */
 }
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 768px) {
+    body {
+        align-items: flex-start; /* Align to the top */
+        justify-content: center; /* Center horizontally */
+        overflow: hidden; /* Prevents horizontal scrolling */
+    }
+    
+    iframe {
+        transform: rotate(90deg); /* Rotate the iframe 90 degrees clockwise */
+        transform-origin: top left; /* Set the origin of the rotation */
+        width: 100vh; /* Set width to the viewport height */
+        height: 128vw; /* Set height to the viewport width */
+        max-width: 1080px; /* Set maximum width */
+        max-height: 1920px; /* Set maximum height */
+        margin-top: calc((100vh - 1080px) / 2); /* Calculate top margin to center */
+        margin-left: calc((100vw - 1920px) / 2); /* Calculate left margin to center */
+    }
+}
