@@ -13,7 +13,7 @@ function rotateAndScaleIframeBasedOnOrientation() {
         iframe.style.height = '105vw';
         iframe.style.maxWidth = 'none';
         iframe.style.maxHeight = 'none';
-        iframe.style.marginTop = 'calc((100vh - 100vw) / 2)';
+        iframe.style.marginTop = 'calc((100vh - 110vw) / 2)';
         iframe.style.marginLeft = 'auto';
         iframe.style.marginRight = 'auto';
     } else {
