@@ -1,33 +1,36 @@
-// Rotate the iframe when viewed on mobile devices
-function rotateIframeForMobile() {
-    var userAgent = navigator.userAgent.toLowerCase();
-    var isIphone = /iphone/.test(userAgent);
-    var isMobile = /mobile/.test(userAgent);
+// Function to rotate the iframe based on device orientation
+function rotateIframeBasedOnOrientation() {
+    var iframe = document.getElementById('sheet-iframe');
 
-    if (isIphone || isMobile) {
-        var iframe = document.getElementById('sheet-iframe');
+    // Check the current orientation
+    var orientation = window.orientation;
+
+    // Apply rotation based on orientation
+    if (orientation === 0 || orientation === 180) {
+        // Portrait orientation
         iframe.style.transform = 'rotate(90deg)';
         iframe.style.width = '100vh';
         iframe.style.height = '100vw';
         iframe.style.maxWidth = 'none';
         iframe.style.maxHeight = 'none';
-
-        // Calculate left position to center iframe horizontally
-        var viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-        var leftPosition = Math.max((viewportWidth - iframe.offsetHeight) / 2, 0);
-        iframe.style.left = leftPosition + 'px';
-
-        // Adjust top position to align iframe to the top of the viewport
-        iframe.style.top = '0';
-
-        // Reset margins
-        iframe.style.marginTop = '0';
-        iframe.style.marginLeft = '0';
-        iframe.style.marginRight = '0';
+        iframe.style.marginTop = 'calc((100vh - 100vw) / 2)';
+        iframe.style.marginLeft = 'auto';
+        iframe.style.marginRight = 'auto';
+    } else {
+        // Landscape orientation
+        iframe.style.transform = ''; // Reset rotation
+        iframe.style.width = ''; // Reset width
+        iframe.style.height = ''; // Reset height
+        iframe.style.maxWidth = ''; // Reset max-width
+        iframe.style.maxHeight = ''; // Reset max-height
+        iframe.style.marginTop = ''; // Reset top margin
+        iframe.style.marginLeft = ''; // Reset left margin
+        iframe.style.marginRight = ''; // Reset right margin
     }
 }
 
-// Call the rotation function when the document is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    rotateIframeForMobile();
-});
+// Add event listener for orientation change
+window.addEventListener('orientationchange', rotateIframeBasedOnOrientation);
+
+// Call the function initially to set the correct rotation
+rotateIframeBasedOnOrientation();
