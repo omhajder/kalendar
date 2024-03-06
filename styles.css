@@ -24,13 +24,13 @@ iframe {
     }
     
     iframe {
-        transform: rotate(90deg); /* Rotate the iframe 90 degrees clockwise */
-        transform-origin: top left; /* Set the origin of the rotation */
         width: 100vh; /* Set width to the viewport height */
         height: 128vw; /* Set height to the viewport width */
-        max-width: 1080px; /* Set maximum width */
-        max-height: 1920px; /* Set maximum height */
-        margin-top: calc((100vh - 1080px) / 2); /* Calculate top margin to center */
-        margin-left: calc((100vw - 1920px) / 2); /* Calculate left margin to center */
+        max-width: 100%; /* Set maximum width */
+        max-height: none; /* Remove maximum height */
+        margin-top: calc((100vh - 100vw) / 2); /* Calculate top margin to center */
+        margin-left: auto; /* Set left margin to auto to center */
+        margin-right: auto; /* Set right margin to auto to center */
+        transform: rotate(90deg); /* Rotate the iframe 90 degrees clockwise */
     }
 }
