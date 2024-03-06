@@ -15,14 +15,8 @@ iframe {
     display: block; /* Remove any default inline styles */
 }
 
-/* Media query for mobile devices */
+/* Apply rotation to iframe for mobile devices */
 @media only screen and (max-width: 768px) {
-    body {
-        align-items: flex-start; /* Align to the top */
-        justify-content: center; /* Center horizontally */
-        overflow: hidden; /* Prevents horizontal scrolling */
-    }
-    
     iframe {
         width: 100vh; /* Set width to the viewport height */
         height: 128vw; /* Set height to the viewport width */
